@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 
 struct notas
 {
@@ -136,7 +135,6 @@ int listenToInputs()
 {
   char choice;
   int listenedAlunos = 0;
-  char handleName[50];
 
   printf("Vamos comecar recebendo os dados dos alunos\n");
 
@@ -158,8 +156,7 @@ int listenToInputs()
 
     fflush(stdin);
     printf("\nQual o nome deste aluno?: ");
-    gets(handleName);
-    strcpy(alunos[listenedAlunos].nome, handleName);
+    gets(alunos[listenedAlunos].nome);
 
     printf("\nAgora, entre as 3 notas deste aluno, separado por espacos\n");
     scanf("%f %f %f", &alunos[listenedAlunos].notas.prova1, &alunos[listenedAlunos].notas.prova2, &alunos[listenedAlunos].notas.prova3);

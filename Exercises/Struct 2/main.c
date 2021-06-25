@@ -163,7 +163,7 @@ int listenToInputs()
 
     listenedAlunos++;
 
-  } while (listenedAlunos <= 20);
+  } while (listenedAlunos < 20);
 
   printf("\n=====================================\n");
   return listenedAlunos;

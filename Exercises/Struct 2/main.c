@@ -40,13 +40,7 @@ void finaljudgment(int alunosCount)
 
 void calculateAverage(int alunosCount)
 {
-  struct lowestAverage
-  {
-    int index;
-    float average;
-  };
-
-  struct highestAverage
+  struct averages
   {
     int index;
     float average;
@@ -54,8 +48,8 @@ void calculateAverage(int alunosCount)
 
   struct AverageAlunos
   {
-    struct lowestAverage lowestAverage;
-    struct highestAverage highestAverage;
+    struct averages lowestAverage;
+    struct averages highestAverage;
   } average;
 
   // Initialize
@@ -83,23 +77,11 @@ void calculateAverage(int alunosCount)
 
 void highestGrade(int alunosCount)
 {
-  struct HighestProva1
+  struct HighestProva
   {
     int index;
     float nota;
-  } pv1;
-
-  struct HighestProva2
-  {
-    int index;
-    float nota;
-  } pv2;
-
-  struct HighestProva3
-  {
-    int index;
-    float nota;
-  } pv3;
+  } pv1, pv2, pv3;
 
   // Initialize
 

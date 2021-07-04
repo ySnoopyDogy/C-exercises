@@ -34,11 +34,44 @@ int main()
 
 void calcDate()
 {
+
+  int diasDosMeses[12] = {31,
+                          28,
+                          31,
+                          30,
+                          31,
+                          30,
+                          31,
+                          31,
+                          30,
+                          31,
+                          30,
+                          31};
+
+  // Calcular Bissexto
+
+  int bissextos = 0;
+
+  for (int i = data1.ano; i <= data2.ano; i++)
+  {
+    if (i % 4 == 0 && data2.mes >= 2)
+      bissextos++;
+  }
+
+  // Calcular Dias
+
+  int diasPelosMeses = 0;
+
+  for (int i = data1.mes; i < data2.mes; i++)
+  {
+    diasPelosMeses += diasDosMeses[i - 1];
+  }
+
+  //resto
   int anoDiff = data2.ano - data1.ano;
-  int mesDiff = data2.mes - data1.mes;
   int diaDiff = data2.dia - data1.dia;
 
-  int totalDias = (anoDiff * 365) + (mesDiff * 30) + diaDiff;
+  int totalDias = ((anoDiff * 365) + (bissextos)) + (diasPelosMeses) + diaDiff;
 
   if (totalDias < 0)
     totalDias *= -1;

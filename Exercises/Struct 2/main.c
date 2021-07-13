@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define TOTAL_ALUNOS 20 
+
 struct notas
 {
   float prova1;
@@ -12,7 +14,7 @@ struct aluno
   unsigned int matricula;
   char nome[50];
   struct notas notas;
-} alunos[20];
+} alunos[TOTAL_ALUNOS];
 
 int main()
 {
@@ -145,7 +147,7 @@ int listenToInputs()
 
     listenedAlunos++;
 
-  } while (listenedAlunos < 20);
+  } while (listenedAlunos < TOTAL_ALUNOS);
 
   printf("\n=====================================\n");
   return listenedAlunos;

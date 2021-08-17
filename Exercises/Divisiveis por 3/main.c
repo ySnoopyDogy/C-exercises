@@ -1,44 +1,25 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-void main()
+
+int main()
 {
+    int x,y,matriztrasponta[5][5],matriz[5][5]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25};
 
-  int PrimeiroNumero = 0, SegundoNumero = 0, i, Divisiveis = 0;
-
-  printf("============================================================================================\n                            Boas vindas ao CHEQUE OS MULTIPLOS DE 3\nPara comecar, indique um intervalo de numeros inteiros para calcular\n\nPrimeiro Numero: ");
-
-  scanf("%i", &PrimeiroNumero);
-  printf("\nSegundo numero: ");
-  scanf("%i", &SegundoNumero);
-  printf("\n");
-
-  if (PrimeiroNumero > SegundoNumero)
-  {
-    printf("\nTu nao podes passar o primeiro numero sendo maior que o primeiro :(");
-    return;
-  }
-
-  for (i = PrimeiroNumero; i <= SegundoNumero; i++)
-  {
-    if (i != 0)
-    {
-      int temp = i / 3;
-      int test = temp * 3;
-
-      if (test == i)
-      {
-        Divisiveis++;
-        printf("%i,", i);
-      }
+    for(x=0;x<5;x++){
+        for(y=0;y<5;y++){
+            printf("[%i][%i]=%i",x,y,matriz[x][y]);
+            matriztrasponta[y][x]= matriz[x][y];
+        }
+        printf("\n\n");
     }
-  }
+        printf("\n\n");
 
-  if (Divisiveis > 0)
-    printf("\n\nEntre %i e %i, %i numeros sao divisiveis por 3!\n", PrimeiroNumero, SegundoNumero, Divisiveis);
-  else
-    printf("\n\nNenhum numero entre %i e %i eh divisivel por 3\n", PrimeiroNumero, SegundoNumero);
+    for(x=0;x<5;x++){
+        for(y=0;y<5;y++){
+            printf("[%i][%i]=%i",x,y,matriztransposta[x][y]);
+        }
+        printf("\n\n");
+    }
 
-  printf("\n\n============================================================================================\n");
-  system("pause");
+    return 0;
 }

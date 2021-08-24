@@ -58,7 +58,7 @@ void ordenar(int a[6][6], int b[36])
   {
     for (int j = 0; j < 6; j++)
     {
-      printf("[%i][%i] = %i      ", i, j, a[i][j]);
+      printf("[%i][%i] = %i\t", i, j, a[i][j]);
     }
     printf("\n");
   }
@@ -68,7 +68,7 @@ void ordenar(int a[6][6], int b[36])
   {
     for (int j = 0; j < 6; j++)
     {
-      printf("[%i][%i] = %i      ", i, j, ordenado[i][j]);
+      printf("[%i][%i] = %i\t", i, j, ordenado[i][j]);
     }
     printf("\n");
   }

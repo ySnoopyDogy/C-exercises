@@ -1,8 +1,12 @@
-# C-programing
+# C-exercises
 
-Neste repo estão todas as minhas atividades de C na disciplina de Elementos de Programação
+Neste repo estão todas as minhas atividades que utilizam a linguagem `C` na minha escola [FETLSVC](https://www.liberato.com.br/)
 
-Cada exercício está separado por pasta, e em cada pasta de exercício possui um `README.MD` explicando o exercício e como resolvi
+Atualmente existem 2 disciplinas
+- Elementos de Programação
+  > Primeira matéria de programação que tivemos, aqui aprendemos a base do `C`, aprendendo coisas como estruturas, tipos de dados, manipulação de strings, ponteiros, entre outros
+- Sistemas Microprocessados II
+  > Aqui aprendemos a criar sistemas embarcados utilizando um microprocessador chamado ARM
 
 ---
 

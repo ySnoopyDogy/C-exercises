@@ -12,7 +12,9 @@ pressionar-se o botão de resset.
 
 > Primeiro vemos o que temos
 
-Cálculo de Tempo: `tempo = (PSC + 1)(CP + 1) / Fosc`
+Cálculo de Tempo: 
+
+![equação](https://latex.codecogs.com/png.image?\inline&space;\large&space;\dpi{100}\bg{white}Tempo&space;=&space;(PSC&space;&plus;&space;1)(CP&space;&plus;&space;1)&space;/&space;Fosc&space;)
 
 Default Fosc: `84MHz`.
 
@@ -20,4 +22,10 @@ Frequência Inicial: `1Hz`.
 
 Período Total: `1s` (`0,5s para ON, 0,5s para OFF`)
 
-Resolução: `0,5 = (PSC + 1)(CP + 1) / 84e+6`
+1. Resolução: `0,5 = (PSC + 1)(CP + 1) / 84e+6`
+
+2. Em Prática (Adotando CP + 1 = 100)
+
+  `PSC + 1 = (0,5 x 84e+6) / 100`
+  
+  `PSC = 419999`

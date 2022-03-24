@@ -62,13 +62,35 @@ Período Total: `1s` (`0,5s para ON, 0,5s para OFF`)
  ```c
  // NÃO É EXIT, É EXTI = EXTernal Interrup
  void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+   // Verifica DEBOUNCE para não termos problema do botão REPICAR
 	if(DEBOUNCE == 0) {
 
-    // É importante checar o pino de onde veio a interrupção para que, 
-    // caso haja mais de uma interrupção declarada, sabermos qual interrupção foi triggada
+    /* É importante checar o pino de onde veio a interrupção para que, 
+     caso haja mais de uma interrupção declarada, sabermos qual interrupção foi triggada 
+    */
 
 		if(GPIO_Pin == B1_Pin) {
-      HAL_TIM_Base_Start_IT(&htim2); // Inicia o TIM2
+      // hasPressed é uma variável global para checar se é a primeira vez que o botão foi pressionado, para mudar a frequencia do tim
+
+      if(hasPressed == 0) {
+        HAL_TIM_Base_Stop_IT(&htim2);
+        TIM1 -> PSC = 41999;
+
+        // Liga o Timer
+        HAL_TIM_Base_Start_IT(&htim2);
+        hasPressed = 1;
+      } else { 
+        // Sempre é bom parar o timer para mudar o valor dele
+
+        HAL_TIM_Base_Stop_IT(&htim2);
+        TIM1 -> PSC = 8399;
+
+        // Restarta o timer
+        HAL_TIM_Base_Start_IT(&htim2);
+        
+        hasPressed = 0;
+      }
+
       HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
     }
 		
@@ -85,11 +107,36 @@ Agora, devemos configurar a interrupção do TIM2, que vai triggar quando o time
 // htim é um **ponteiro**!!
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 
-  // É importante testar qual foi o timer que triggou este interrupt para o caso
-  // de termos mais de um timer configurado
-  // Aqui verificamos se a Instância do htim é o TIM2, que configuramos no .ioc
-  if(htim -> Instance == TIM2) {}
+  /* É importante testar qual foi o timer que triggou este interrupt para o caso
+   de termos mais de um timer configurado
+   Aqui verificamos se a Instância do htim é o TIM2, que configuramos no .ioc
+   */
+  if(htim -> Instance == TIM2) {
+    // Trocar o valor do pino do led, para alternar entre ON e OFF no estouro do TIM2 
+       HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+  }
 }
 ```
 
+Feito isso, podemos finalizar nosso código adicionando um delay no DEBOUNCE dentro do nosso while
+
+```c
+   /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+	  if(DEBOUCE == 1) {
+      // Da um delay de 60ms (que é o padrão para o repique parar)
+      HAL_Delay(60);
+      // Verifica se o boca de gamela não está segurando o botão
+      while(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_PIN) == 0) {}
+      HAL_Delay(60);
+      DEBOUNCE = 0;
+	  }
+
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+```
 

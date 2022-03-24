@@ -14,6 +14,8 @@ pressionar-se o botão de resset.
 
 Cálculo de Tempo: 
 
+[comment]: # (Site usado para as equações: https://latex.codecogs.com/)
+
 ![equação](https://latex.codecogs.com/png.image?\inline&space;\large&space;\dpi{100}\bg{white}Tempo&space;=&space;(PSC&space;&plus;&space;1)(CP&space;&plus;&space;1)&space;/&space;Fosc&space;)
 
 Default Fosc: `84MHz`.

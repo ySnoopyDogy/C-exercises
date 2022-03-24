@@ -128,7 +128,7 @@ Feito isso, podemos finalizar nosso código adicionando um delay no DEBOUNCE den
       // Da um delay de 60ms (que é o padrão para o repique parar)
       HAL_Delay(60);
       // Verifica se o boca de gamela não está segurando o botão
-      while(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_PIN) == 0) {}
+      while(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == 0) {}
       HAL_Delay(60);
       DEBOUNCE = 0;
 	  }

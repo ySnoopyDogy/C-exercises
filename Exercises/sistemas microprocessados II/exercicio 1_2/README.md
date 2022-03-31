@@ -37,8 +37,23 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if(GPIO_Pin == B1_Pin) {
 		// Checa se está em debounce
 		if(DEBOUNCE) return;
+
+		// Desliga tudo caso o sistema estiver rodando já
+		if(isSystemRunning) {
+			HAL_TIM_Base_Stop_IT(&htim9);
+			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 0);
+			TIM9 -> PSC = 41999;
+			TIM9 -> CNT = 0;
+			isSystemRunning = 0;
+			DEBOUNCE = !DEBOUNCE;
+			return;
+		}
+
 		// Inicia o timer
 		HAL_TIM_Base_Start_IT(&htim9);
+
+		isSystemRunning = 1; // Seta que o sistema está rodando
+
 		// Troca o estado do Led
 		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 		// Nego o valor de debounce

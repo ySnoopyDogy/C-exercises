@@ -1,4 +1,4 @@
-# Interrupção Externa e de Timer (PWM)
+# Interrupção Externa e de Timer (PWM) (Apenas o exemplo)
 
 ## Proposta 
 
